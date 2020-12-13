@@ -9,8 +9,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.example.demo.StatusPedido;
+import com.example.demo.entities.Categoria;
 import com.example.demo.entities.Pedido;
 import com.example.demo.entities.Usuario;
+import com.example.demo.repositories.CategoriaRepository;
 import com.example.demo.repositories.PedidoRepository;
 import com.example.demo.repositories.UsuarioRepository;
 
@@ -23,6 +25,9 @@ public class TestConfig implements CommandLineRunner {
 
 	@Autowired
 	private PedidoRepository pedidoRepository;
+	
+	@Autowired
+	private CategoriaRepository categoriaRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -37,6 +42,12 @@ public class TestConfig implements CommandLineRunner {
 		Pedido p3 = new Pedido(null, Instant.parse("2020-12-12T18:15:14Z"), StatusPedido.PAGAMENTO_PENDENTE, u1);
 
 		pedidoRepository.saveAll(Arrays.asList(p1, p2, p3));
+		
+		Categoria c1 = new Categoria(null, "Computadores");
+		Categoria c2 = new Categoria(null, "Celulares");
+		Categoria c3 = new Categoria(null, "Eletrodomestico");
+		
+		categoriaRepository.saveAll(Arrays.asList(c1, c2, c3));
 	}
 
 }
