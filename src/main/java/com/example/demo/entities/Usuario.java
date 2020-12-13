@@ -84,6 +84,6 @@ public class Usuario implements Serializable{
 	
 	public List<Pedido> getPedidos() {
 		return pedidos;
-	}
+	}	
 	
 }

@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.example.demo.StatusPedido;
 import com.example.demo.entities.Pedido;
 import com.example.demo.entities.Usuario;
 import com.example.demo.repositories.PedidoRepository;
@@ -19,7 +20,7 @@ public class TestConfig implements CommandLineRunner {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	@Autowired
 	private PedidoRepository pedidoRepository;
 
@@ -30,9 +31,10 @@ public class TestConfig implements CommandLineRunner {
 		Usuario u3 = new Usuario(null, "Mariazinha Lopes", "mariazinha@gmail.com", "11-99999-9997", "55687");
 
 		usuarioRepository.saveAll(Arrays.asList(u1, u2, u3));
-		Pedido p1 = new Pedido(null, Instant.parse("2020-06-20T19:53:07Z"), u1);
-		Pedido p2 = new Pedido(null, Instant.parse("2020-10-05T15:48:33Z"), u2);
-		Pedido p3 = new Pedido(null, Instant.parse("2020-12-12T18:15:14Z"), u1);
+
+		Pedido p1 = new Pedido(null, Instant.parse("2020-06-20T19:53:07Z"), StatusPedido.ENTREGUE, u1);
+		Pedido p2 = new Pedido(null, Instant.parse("2020-10-05T15:48:33Z"), StatusPedido.ENVIADO, u2);
+		Pedido p3 = new Pedido(null, Instant.parse("2020-12-12T18:15:14Z"), StatusPedido.PAGAMENTO_PENDENTE, u1);
 
 		pedidoRepository.saveAll(Arrays.asList(p1, p2, p3));
 	}
