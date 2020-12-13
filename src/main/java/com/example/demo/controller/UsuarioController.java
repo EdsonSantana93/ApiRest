@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Usuario;
 import com.example.demo.Services.UsuarioService;
+import com.example.demo.entities.Usuario;
 
 @RestController
 @RequestMapping(value = "/usuarios")
