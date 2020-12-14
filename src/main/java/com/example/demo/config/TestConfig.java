@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Arrays;
 
@@ -8,12 +9,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import com.example.demo.StatusPedido;
 import com.example.demo.entities.Categoria;
 import com.example.demo.entities.Pedido;
+import com.example.demo.entities.Produto;
+import com.example.demo.entities.StatusPedido;
 import com.example.demo.entities.Usuario;
 import com.example.demo.repositories.CategoriaRepository;
 import com.example.demo.repositories.PedidoRepository;
+import com.example.demo.repositories.ProdutoRepository;
 import com.example.demo.repositories.UsuarioRepository;
 
 @Configuration
@@ -28,6 +31,10 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private CategoriaRepository categoriaRepository;
+	
+	@Autowired
+	private ProdutoRepository produtoRepository;
+	
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -48,6 +55,28 @@ public class TestConfig implements CommandLineRunner {
 		Categoria c3 = new Categoria(null, "Eletrodomestico");
 		
 		categoriaRepository.saveAll(Arrays.asList(c1, c2, c3));
+		
+		Produto pr1 = new Produto(null, "Notebook HYX300", 
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+				+ " Cras accumsan gravida metus, vel rhoncus diam luctus et. "
+				+ "Aliquam quis varius libero. Nunc dolor elit, interdum sit amet posuere vulputate, "
+				+ "laoreet in nisi. Sed et sodales magna.", new BigDecimal(3499.99),
+				"fringilla consequat faucibus");
+		
+		Produto pr2 = new Produto(null, "Celular KK20", 
+				"Sed quis finibus ipsum, at imperdiet felis. Vivamus semper magna eget ex rhoncus,"
+				+ " eget suscipit felis sodales. Vivamus vehicula tincidunt porttitor.",
+						new BigDecimal(899.00),
+						"quis dolor eu sem suscipit");
+		
+		Produto pr3 = new Produto(null, "Celular MDK-12", 
+				"Integer dictum ligula sit amet eros bibendum, id efficitur purus rhoncus. "
+				+ "Pellentesque in condimentum nunc, a condimentum nisl. ",
+						new BigDecimal(1237.50),
+						"tincidunt congue nunc");
+		
+		produtoRepository.saveAll(Arrays.asList(pr1, pr2, pr3));
+		
 	}
 
 }

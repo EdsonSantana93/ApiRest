@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.example.demo.StatusPedido;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity

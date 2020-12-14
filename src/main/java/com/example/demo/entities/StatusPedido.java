@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entities;
 
 public enum StatusPedido {
 	PAGAMENTO_PENDENTE(1),
