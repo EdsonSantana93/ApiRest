@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Services.PedidoService;
 import com.example.demo.entities.Pedido;
+import com.example.demo.services.PedidoService;
 
 @RestController
 @RequestMapping(value = "/pedidos")
