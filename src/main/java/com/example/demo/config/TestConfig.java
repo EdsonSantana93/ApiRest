@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Profile;
 import com.example.demo.entities.Categoria;
 import com.example.demo.entities.Pedido;
 import com.example.demo.entities.Produto;
-import com.example.demo.entities.StatusPedido;
 import com.example.demo.entities.Usuario;
+import com.example.demo.entities.enums.StatusPedido;
 import com.example.demo.repositories.CategoriaRepository;
 import com.example.demo.repositories.PedidoRepository;
 import com.example.demo.repositories.ProdutoRepository;
@@ -69,7 +69,7 @@ public class TestConfig implements CommandLineRunner {
 						new BigDecimal(899.00),
 						"quis dolor eu sem suscipit");
 		
-		Produto pr3 = new Produto(null, "Celular MDK-12", 
+		Produto pr3 = new Produto(null, "TV MDK-12", 
 				"Integer dictum ligula sit amet eros bibendum, id efficitur purus rhoncus. "
 				+ "Pellentesque in condimentum nunc, a condimentum nisl. ",
 						new BigDecimal(1237.50),
@@ -77,6 +77,12 @@ public class TestConfig implements CommandLineRunner {
 		
 		produtoRepository.saveAll(Arrays.asList(pr1, pr2, pr3));
 		
+		pr1.getCategoria().add(c1);
+		pr2.getCategoria().add(c1);
+		pr2.getCategoria().add(c2);
+		pr3.getCategoria().add(c3);
+		
+		produtoRepository.saveAll(Arrays.asList(pr1, pr2, pr3));
 	}
 
 }
