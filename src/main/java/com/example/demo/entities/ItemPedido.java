@@ -8,23 +8,24 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.example.demo.entities.pk.ItemPedidoPk;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="item_pedido")
-public class ItemProduto implements Serializable{
+@Table(name = "item_pedido")
+public class ItemPedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@EmbeddedId
-	private ItemPedidoPk id;
+	private ItemPedidoPk id = new ItemPedidoPk();
 	private Integer quantidade;
 	private BigDecimal preco;
-	
-	public ItemProduto() {
-		
+
+	public ItemPedido() {
+
 	}
-	
-	public ItemProduto(Pedido pedido, Produto produto, Integer quantidade, BigDecimal preco) {
+
+	public ItemPedido(Pedido pedido, Produto produto, Integer quantidade, BigDecimal preco) {
 		super();
 		this.id.setPedido(pedido);
 		this.id.setProduto(produto);
@@ -32,6 +33,7 @@ public class ItemProduto implements Serializable{
 		this.preco = preco;
 	}
 
+	@JsonIgnore
 	public Pedido getPedido() {
 		return id.getPedido();
 	}
@@ -39,11 +41,11 @@ public class ItemProduto implements Serializable{
 	public void setPedido(Pedido pedido) {
 		this.id.setPedido(pedido);
 	}
-	
+
 	public Produto getProduto() {
 		return id.getProduto();
 	}
-	
+
 	public void setProduto(Produto produto) {
 		this.id.setProduto(produto);
 	}
@@ -80,7 +82,7 @@ public class ItemProduto implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ItemProduto other = (ItemProduto) obj;
+		ItemPedido other = (ItemPedido) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -88,6 +90,5 @@ public class ItemProduto implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
+
 }
