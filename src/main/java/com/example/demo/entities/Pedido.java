@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
@@ -98,6 +99,15 @@ public class Pedido implements Serializable {
 
 	public void setPagamento(Pagamento pagamento) {
 		this.pagamento = pagamento;
+	}
+	
+	public BigDecimal getTotal() {
+		BigDecimal soma = new BigDecimal(0);
+		for (ItemPedido item : itens) {
+			soma = soma.add(item.getSubTotal());   
+			System.out.println(item.getSubTotal());
+		}
+		return soma;
 	}
 
 	@Override

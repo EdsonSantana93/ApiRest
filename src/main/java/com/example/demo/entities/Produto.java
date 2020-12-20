@@ -89,7 +89,7 @@ public class Produto implements Serializable {
 		UrlImagem = urlImagem;
 	}
 
-	public Set<Categoria> getCategoria() {
+	public Set<Categoria> getCategorias() {
 		return categorias;
 	}
 	
