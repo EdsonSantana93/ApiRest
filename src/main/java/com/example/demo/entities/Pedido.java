@@ -104,8 +104,7 @@ public class Pedido implements Serializable {
 	public BigDecimal getTotal() {
 		BigDecimal soma = new BigDecimal(0);
 		for (ItemPedido item : itens) {
-			soma = soma.add(item.getSubTotal());   
-			System.out.println(item.getSubTotal());
+			soma = soma.add(item.getSubTotal());
 		}
 		return soma;
 	}
